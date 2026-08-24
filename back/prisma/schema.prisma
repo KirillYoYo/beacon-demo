@@ -29,3 +29,39 @@ model RefreshToken {
 
   @@map("refresh_tokens")
 }
+
+model City {
+  id         Int               @id @default(autoincrement())
+  name       String
+  country    String
+  lat        Float
+  lon        Float
+  timezone   String? // опционально для сложных прогнозов
+  population Int? // для сортировки
+  forecasts  WeatherForecast[]
+
+  @@unique([lat, lon])
+  @@map("cities")
+}
+
+model WeatherForecast {
+  id          Int      @id @default(autoincrement())
+  cityId      Int
+  city        City     @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  datetime    DateTime // точное время прогноза (UTC)
+  temperature Float
+  feelsLike   Float?
+  humidity    Int?
+  pressure    Int?
+  windSpeed   Float?
+  windDir     Int? // градусы
+  description String? // описание погоды
+  icon        String? // код иконки (можно маппить)
+  source      String? // откуда взято (Open-Meteo)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([cityId, datetime])
+  @@index([datetime])
+  @@map("weather_forecasts")
+}
