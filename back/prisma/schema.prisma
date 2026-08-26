@@ -65,3 +65,29 @@ model WeatherForecast {
   @@index([datetime])
   @@map("weather_forecasts")
 }
+
+model BeaconRecord {
+  id                  Int      @id @default(autoincrement())
+  fingerprint         String   @db.Text
+  sessionId           String?  @db.Text
+  userId              Int? // если есть авторизация
+  url                 String?  @db.Text // текущий URL страницы
+  referrer            String?  @db.Text // берём с сервера
+  screenResolution    String? // "1920x1080"
+  colorDepth          Int? // бит на пиксель
+  language            String?
+  platform            String?
+  timezoneOffset      Int? // минуты от UTC
+  deviceMemory        Float? // ГБ
+  hardwareConcurrency Int?
+  touchSupport        Boolean?
+  firstPaint          Float? // время в мс
+  domReadyTime        Float? // время в мс
+  clicksCount         Int? // кол-во кликов
+  connectionType      String? // "4g", "wifi" и т.д.
+  canvasFingerprint   String? // дополнительный отпечаток
+  userAgent           String?  @db.Text // с сервера
+  ipAddress           String?  @db.Text // с сервера
+  payload             Json?    @db.JsonB // всё остальное
+  createdAt           DateTime @default(now()) @map("created_at")
+}
