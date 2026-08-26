@@ -5,6 +5,7 @@ import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons'
 import { useIsLogin } from './IsLoginContext'
 // @ts-ignore
 import styles from './styles.module.scss'
+import {tokenStorage} from "@/utils/tokenStorage";
 
 const { Title, Text } = Typography
 
@@ -18,37 +19,7 @@ const AuthForm = ({
     const [loading, setLoading] = useState(false)
     const [form] = Form.useForm()
     const { isAuth, setIsAuth } = useIsLogin()
-
-    useEffect(() => {
-        checkToken()
-    }, [])
-
-    const checkToken = async () => {
-        try {
-            const res = await fetch('http://localhost:3000/collections', {
-                credentials: 'include',
-            })
-
-            if (res.ok) {
-                setIsAuth(true)
-                return
-            }
-
-            if (res.status === 401) {
-                const refreshRes = await fetch('http://localhost:3000/auth/refresh', {
-                    method: 'POST',
-                    credentials: 'include',
-                })
-
-                setIsAuth(refreshRes.ok)
-            } else {
-                setIsAuth(false)
-            }
-        } catch (error) {
-            console.error('Ошибка проверки токена', error)
-            setIsAuth(false)
-        }
-    }
+    const [refreshToken, setRefrehToken] = useState('')
 
     const sendAuthRequest = async (url: string, data: any) => {
         try {
@@ -88,6 +59,8 @@ const AuthForm = ({
 
             if (result && isLogin) {
                 setIsAuth(true)
+                tokenStorage.setAccessToken(JSON.stringify(result.access_token))
+                tokenStorage.setRefreshToken(JSON.stringify(result.refresh_token))
             }
         } catch (error) {
             console.error('Validation failed:', error)

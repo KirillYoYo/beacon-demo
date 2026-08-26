@@ -14,8 +14,6 @@ import AuthForm from './AuthForm'
 const allValues = Object.values(allPaths) as Point[][]
 
 const Login = () => {
-    const [token, setToken] = useState('')
-    const [refreshToken, setRefrehToken] = useState('')
     const [isLogin, setIsLogin] = useState(true)
 
     return (

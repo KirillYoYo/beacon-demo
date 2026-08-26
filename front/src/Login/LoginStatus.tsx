@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { getFromStorage, removeFromStorage } from '../utils/utils'
 
 import { useIsLogin } from './IsLoginContext'
+import { tokenStorage } from '@/utils/tokenStorage'
 
 const LoginStatus = () => {
     const { isAuth, setIsAuth } = useIsLogin()
@@ -26,6 +27,8 @@ const LoginStatus = () => {
                 credentials: 'include',
             })
             setIsAuth(false)
+            tokenStorage.removeAccessToken()
+            tokenStorage.removeRefreshToken()
         } catch (error) {
             console.error('Ошибка выхода:', error)
         }

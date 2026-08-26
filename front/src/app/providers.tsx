@@ -2,6 +2,7 @@
 
 import React, { ReactNode } from 'react'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import { App as AntdApp } from 'antd'
 
 import { IsLoginProvider } from '../Login/IsLoginContext'
 import LoginStatus from '../Login/LoginStatus'
@@ -20,8 +21,10 @@ const Providers = ({ children }: ProvidersProps) => {
     return (
         <ApolloProvider client={client}>
             <IsLoginProvider>
-                <LoginStatus />
-                {children}
+                <AntdApp>
+                    <LoginStatus />
+                    {children}
+                </AntdApp>
             </IsLoginProvider>
         </ApolloProvider>
     )

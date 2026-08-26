@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react'
+import React, {createContext, useContext, useState, ReactNode, useEffect} from 'react'
+import {tokenStorage} from "@/utils/tokenStorage";
 
 type LoginContextValue = {
     isAuth: boolean | undefined
@@ -9,6 +10,11 @@ const isLoginContext = createContext<LoginContextValue | undefined>(undefined)
 
 export const IsLoginProvider = ({ children }: { children: ReactNode }) => {
     const [isAuth, setIsAuth] = useState<boolean | undefined>(undefined)
+
+    useEffect(() => {
+        const token = tokenStorage.getAccessToken();
+        setIsAuth(!!token);
+    }, []);
 
     return (
         <isLoginContext.Provider value={{ isAuth, setIsAuth }}>{children}</isLoginContext.Provider>
