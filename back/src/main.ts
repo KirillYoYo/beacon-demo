@@ -5,8 +5,10 @@ import { URI_FOR_CORS } from '../consts';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  const corsOrigin = process.env.FRONTEND_URL || URI_FOR_CORS;
+
   app.enableCors({
-    origin: URI_FOR_CORS,
+    origin: corsOrigin,
     credentials: true,
   });
 
