@@ -1,13 +1,14 @@
 import { PrismaClient } from '@prisma/client';
 import * as fs from 'fs';
-import * as readline from 'node:readline';
+import * as path from 'path';
 
 const prisma = new PrismaClient();
 
 async function seedCities() {
   try {
     console.log('📖 Чтение файла russian_cities_array.json...');
-    const raw = fs.readFileSync('./russian_cities_array.json', 'utf8');
+    const filePath = path.join(__dirname, 'russian_cities_array.json');
+    const raw = fs.readFileSync(filePath, 'utf8');
     const data = JSON.parse(raw);
 
     console.log(`📄 Всего записей в файле: ${data.length}`);
