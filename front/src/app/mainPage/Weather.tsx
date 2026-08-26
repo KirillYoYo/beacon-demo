@@ -72,7 +72,7 @@ export const Weather: React.FC = () => {
 
     return (
         <div style={{ padding: '24px' }}>
-            <h1>Погодный справочник</h1>
+            <h1 style={{ color: '#ccc' }}>Погодный справочник</h1>
 
             <WeatherMenu
                 cities={cities}
