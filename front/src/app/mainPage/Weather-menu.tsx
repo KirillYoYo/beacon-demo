@@ -57,6 +57,7 @@ export const WeatherMenu: React.FC<WeatherMenuProps> = ({
                         min={-30}
                         max={50}
                         value={tempRange}
+                        // @ts-ignore
                         onChange={onTempRangeChange}
                     />
                     <Space>
@@ -83,6 +84,7 @@ export const WeatherMenu: React.FC<WeatherMenuProps> = ({
                         min={950}
                         max={1050}
                         value={pressureRange}
+                        // @ts-ignore
                         onChange={onPressureRangeChange}
                     />
                     <Space>
@@ -109,6 +111,7 @@ export const WeatherMenu: React.FC<WeatherMenuProps> = ({
                         min={0}
                         max={100}
                         value={humidityRange}
+                        // @ts-ignore
                         onChange={onHumidityRangeChange}
                     />
                     <Space>

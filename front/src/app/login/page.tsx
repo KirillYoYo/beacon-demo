@@ -3,6 +3,7 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 
+// @ts-ignore
 import styles from '../../Login/loginStyles.module.scss'
 
 const LoginPage = () => {

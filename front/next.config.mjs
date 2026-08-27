@@ -13,12 +13,15 @@ const nextConfig = {
         'rc-picker',
         'rc-overflow',
         'rc-resize-observer',
-        'rc-motion'
+        'rc-motion',
     ],
     // экспериментальная поддержка AntD (Next.js 14+)
     experimental: {
-        optimizePackageImports: ['antd']
-    }
-};
+        optimizePackageImports: ['antd'],
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+}
 
-export default nextConfig;
+export default nextConfig

@@ -9,9 +9,14 @@ import LoginStatus from '../Login/LoginStatus'
 
 // Глобальный Apollo-клиент для клиентской части
 const client = new ApolloClient({
-    uri: 'http://localhost:3000/graphql',
+    uri: process.env.NEXT_PUBLIC_API_URL + '/graphql' || 'http://localhost:3000/graphql',
     cache: new InMemoryCache(),
 })
+
+console.log(
+    'currnet uri:',
+    process.env.NEXT_PUBLIC_API_URL + '/graphql' || 'http://localhost:3000/graphql'
+)
 
 type ProvidersProps = {
     children: ReactNode

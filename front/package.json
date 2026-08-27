@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "proxy": "http://localhost:3000",
   "scripts": {
     "dev": "next dev -p 9000",
     "build": "next build",

@@ -28,7 +28,6 @@
     "declarationMap": true,
     "sourceMap": true,
     "types": [
-      "jest",
       "node"
     ],
     "strictPropertyInitialization": false,

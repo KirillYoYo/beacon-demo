@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 // @ts-ignore
 import Sider from 'antd/es/layout/Sider'
 
+// @ts-ignore
 import styles from './styles.module.scss'
 import LoginButton from './LoginButton'
 

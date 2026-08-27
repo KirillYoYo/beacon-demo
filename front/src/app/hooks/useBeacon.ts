@@ -4,7 +4,7 @@ import FingerprintJS from '@fingerprintjs/fingerprintjs'
 type BeaconPayload = Record<string, any>
 
 // URL бэкенда (порт 3000)
-const BEACON_URL = 'http://localhost:3000/beacon'
+const BEACON_URL = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/beacon`
 
 export function useBeacon(additionalPayload: BeaconPayload = {}) {
     const fingerprintRef = useRef<string | null>(null)

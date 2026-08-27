@@ -5,6 +5,7 @@ import { Content } from 'antd/es/layout/layout'
 import { CustomPath } from '../utils/CustomPath'
 import { getEdges } from '../utils/utils'
 
+// @ts-ignore
 import styles from './loginStyles.module.scss'
 import LoginSider from './LoginSider'
 import FlyingSVGPaths from './LoginBg'

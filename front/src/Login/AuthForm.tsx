@@ -5,7 +5,7 @@ import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons'
 import { useIsLogin } from './IsLoginContext'
 // @ts-ignore
 import styles from './styles.module.scss'
-import {tokenStorage} from "@/utils/tokenStorage";
+import { tokenStorage } from '@/utils/tokenStorage'
 
 const { Title, Text } = Typography
 
@@ -55,7 +55,10 @@ const AuthForm = ({
             }
 
             const endpoint = isLogin ? '/auth/login' : '/auth/register'
-            const result = await sendAuthRequest(`http://localhost:3000${endpoint}`, payload)
+            const result = await sendAuthRequest(
+                `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}${endpoint}`,
+                payload
+            )
 
             if (result && isLogin) {
                 setIsAuth(true)
