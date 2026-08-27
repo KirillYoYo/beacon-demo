@@ -12,6 +12,11 @@ async function bootstrap() {
     credentials: true,
   });
 
-  await app.listen(process.env.PORT ?? 3000);
+  const port = process.env.PORT || 8080;
+  console.log(`📡 PORT from env: ${process.env.PORT}`);
+  console.log(`📡 Using port: ${port}`);
+
+  await app.listen(port, '0.0.0.0');
+  console.log(`✅ Server is running on port ${port}`);
 }
 bootstrap();
